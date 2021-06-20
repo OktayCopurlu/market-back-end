@@ -8,7 +8,7 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
 
 const app = express();
-// const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 
 app.use(cors());
 app.use(cookieParser());
@@ -17,9 +17,9 @@ app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// app.listen(port, () => {
-//   console.log("Server is running on port:" + port);
-// });
+app.listen(port, () => {
+  console.log("Server is running on port:" + port);
+});
 
 const uri =
   "mongodb+srv://Oktay:Oktay1299@cluster0.b2ny3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
