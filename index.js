@@ -12,7 +12,13 @@ const port = process.env.PORT || 5000;
 app.listen((port), () => {
   console.log("Server is running on port:" + port);
 })
-
+app.use("/",  async (req, res) => {
+  try {
+    return await res.json("server is working on port:" + port);
+  } catch (error) {
+    return await res.json("server isn't working...");
+  }
+});
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json({ limit: "100mb" }));
