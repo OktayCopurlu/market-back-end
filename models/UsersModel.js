@@ -9,7 +9,7 @@ const UsersSchema = new mongoose.Schema({
     detail: { type: String, required: false },
     canton: { type: String, required: false },
     city: { type: String, required: false },
-    adress: { type: String, required: false },
+    address: { type: String, required: false },
     contactNumber: { type: Number, required: false },
     photos: { type: Array, required: false },
 
