@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
+const dotenv = require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 8080;
