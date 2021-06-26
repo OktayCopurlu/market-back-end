@@ -2,15 +2,13 @@ const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
-const https = require('https');
-
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
 
 const app = express();
 const port = process.env.PORT || 8080;
 
-https.createServer().listen((port), () => {
+app.listen((port), () => {
   console.log("Server is running on port:" + port);
 })
 
