@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const cookieParser = require("cookie-parser");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
@@ -20,19 +20,19 @@ app.use(express.urlencoded({ limit: "100mb", extended: true }));
 
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-const uri =
-  "mongodb+srv://Oktay:Oktay1299@cluster0.b2ny3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+// const uri =
+//   "mongodb+srv://Oktay:Oktay1299@cluster0.b2ny3.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
-mongoose.connect(uri, {
-  useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect(uri, {
+//   useNewUrlParser: true,
+//   useCreateIndex: true,
+//   useUnifiedTopology: true,
+// });
 
-const connection = mongoose.connection;
-connection.once("open", () => {
-  console.log("MangoDB database connection established successfully");
-});
+// const connection = mongoose.connection;
+// connection.once("open", () => {
+//   console.log("MangoDB database connection established successfully");
+// });
 
 
 const clothesRouter = require("./routers/products");
