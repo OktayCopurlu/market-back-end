@@ -17,7 +17,6 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json({ limit: "100mb" }));
 app.use(express.urlencoded({ limit: "100mb", extended: true }));
-
 app.use("/swagger", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const uri =
@@ -34,14 +33,14 @@ connection.once("open", () => {
   console.log("MangoDB database connection established successfully");
 });
 
-
 const clothesRouter = require("./routers/products");
 const wishesRouter = require("./routers/wish");
 const usersRouter = require("./routers/users");
 const emailRouter = require("./routers/email");
 
-
 app.use("/products", clothesRouter);
 app.use("/wishes", wishesRouter);
 app.use("/users", usersRouter);
 app.use("/email", emailRouter);
+
+module.exports =app;
