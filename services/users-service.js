@@ -10,7 +10,6 @@ const {
 
 //create a new user
 async function createUser(pUser) {
- 
   return await create(pUser);
 }
 

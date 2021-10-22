@@ -6,12 +6,17 @@ const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./swagger/swagger.json");
 const dotenv = require("dotenv").config();
 
+const clothesRouter = require("./routers/products");
+const wishesRouter = require("./routers/wish");
+const usersRouter = require("./routers/users");
+const emailRouter = require("./routers/email");
+const messagesRouter = require("./routers/messages");
 const app = express();
 const port = process.env.PORT || 8080;
 
-app.listen((port), () => {
+app.listen(port, () => {
   console.log("Server is running on port:" + port);
-})
+});
 
 app.use(cors());
 app.use(cookieParser());
@@ -33,14 +38,9 @@ connection.once("open", () => {
   console.log("MangoDB database connection established successfully");
 });
 
-const clothesRouter = require("./routers/products");
-const wishesRouter = require("./routers/wish");
-const usersRouter = require("./routers/users");
-const emailRouter = require("./routers/email");
-
+app.use("/messages", messagesRouter);
 app.use("/products", clothesRouter);
 app.use("/wishes", wishesRouter);
 app.use("/users", usersRouter);
 app.use("/email", emailRouter);
-
-module.exports =app;
+module.exports = app;

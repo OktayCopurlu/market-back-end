@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const { checkJwt } = require("../auth/check-jwt");
-
 const {
   createProduct,
   deleteProduct,

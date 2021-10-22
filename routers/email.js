@@ -6,9 +6,9 @@ router.post("/", async (req, res) => {
     const body = await req.body;
     const createEmailAtDB = await createNewEmail(body);
     const sendEmail = await sendNewEmail(body)
-    return await res.json("email has sent successfully");
+    return  res.json("email has sent successfully");
   } catch (error) {
-    return await res.json("email couldnt sent");
+    return  res.json("email couldnt sent");
   }
 });
 

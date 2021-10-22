@@ -1,5 +1,5 @@
 const products = require("../models/ProductsModel");
-
+const users = require("../models/UsersModel");
 //get all products
 async function getAll() {
   return await products.find().sort({ _id: -1 });
@@ -23,8 +23,38 @@ async function remove(pId) {
 
 //update a product
 async function update(pReq) {
-  const apdatedProduct = products.findByIdAndUpdate(pReq.params.id, pReq.body);
+  const apdatedProduct = await products.findByIdAndUpdate(
+    pReq.params.id,
+    pReq.body
+  );
   return await apdatedProduct; // 07.10.2021 I changed someting
+}
+
+//send message id into product
+async function addMessage(req) {
+  const productID = req.productID;
+  const senderID = req.senderID;
+  const recipientID = req.recipientID;
+
+  const messageID = req._id;
+  await products.updateMany(
+    { _id: productID },
+    { $addToSet: { messages: messageID } }
+  );
+  await users.updateMany(
+    { _id: senderID },
+    { $addToSet: { messages: messageID } }
+  );
+  await users.updateMany(
+    { _id: recipientID },
+    { $addToSet: { messages: messageID } }
+  );
+}
+//get products messages
+async function getProductMessages(req) {
+  const productID = req;
+  const messages = await products.findById(productID).populate("messages");
+  return await messages.messages;
 }
 
 //filter products
@@ -61,4 +91,13 @@ async function filter(pReq, pRes) {
   }
 }
 
-module.exports = { getAll, filter, findById, create, update, remove };
+module.exports = {
+  getProductMessages,
+  addMessage,
+  getAll,
+  filter,
+  findById,
+  create,
+  update,
+  remove,
+};

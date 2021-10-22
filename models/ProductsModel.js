@@ -14,7 +14,8 @@ const productsSchema = new Schema({
         detail: { type: String, required: true },
         contactTel: { type: String, required: false },
         photos: { type: Array, required: true },
-        contactEmail:{ type: String, required: false }
+        contactEmail:{ type: String, required: false },
+        messages:[{ type: mongoose.Types.ObjectId, ref: 'messages' }]
     }, {
         timestamps: true,
     }

@@ -9,6 +9,7 @@ const {
 } = require("../services/users-service");
 const { checkJwt } = require("../auth/check-jwt");
 
+
 //get all users
 router.route("/").get((req, res) => {
   getAllUsers()
@@ -48,9 +49,6 @@ router.put("/edit/:id", checkJwt,(req, res) => {
     .then(() => res.json("user updated"))
     .catch((err) => res.status(400).json("Error :" + err));
 });
-
-
-
 
 module.exports = router;
 

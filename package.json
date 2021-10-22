@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
-    "start:dev": "nodemon index.js",
+    "start": "nodemon index.js",
+    "start-dev": "nodemon index.js",
     "swagger": "nodemon ./swagger/swagger.js"
   },
   "jest": {
