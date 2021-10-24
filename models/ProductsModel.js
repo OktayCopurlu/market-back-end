@@ -15,7 +15,8 @@ const productsSchema = new Schema({
         contactTel: { type: String, required: false },
         photos: { type: Array, required: true },
         contactEmail:{ type: String, required: false },
-        messages:[{ type: mongoose.Types.ObjectId, ref: 'messages' }]
+        messages:[{ type: mongoose.Types.ObjectId, ref: 'messages' }],
+        mongoUserID:{ type: mongoose.Types.ObjectId, required:true}
     }, {
         timestamps: true,
     }

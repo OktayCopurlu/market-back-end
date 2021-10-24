@@ -9,7 +9,6 @@ const {
 } = require("../services/users-service");
 const { checkJwt } = require("../auth/check-jwt");
 
-
 //get all users
 router.route("/").get((req, res) => {
   getAllUsers()
@@ -19,7 +18,7 @@ router.route("/").get((req, res) => {
 
 //filter user
 router.route("/filter").get((req, res) => {
-  filterUser(req, res);
+  filterUser(req, res)
 });
 
 //create a user
@@ -37,18 +36,17 @@ router.route("/:id").get((req, res) => {
 });
 
 //delete users
-router.delete("/:id" , checkJwt, (req, res) => {
+router.delete("/:id", checkJwt, (req, res) => {
   deleteUser(req.params.id)
     .then(() => res.json("user deleted!"))
     .catch((err) => res.status(400).json("Error :" + err));
 });
 
 //edit user
-router.put("/edit/:id", checkJwt,(req, res) => {
+router.put("/edit/:id", checkJwt, (req, res) => {
   updateUser(req)
     .then(() => res.json("user updated"))
     .catch((err) => res.status(400).json("Error :" + err));
 });
 
 module.exports = router;
-
