@@ -2,8 +2,9 @@ const router = require("express").Router();
 const {
   getAllMessages,
   filterMessages,
-  createNewMessage,
+  createNewMessage
 } = require("../services/messages-service");
+
 const { checkJwt } = require("../auth/check-jwt");
 
 router.post("/", (req, res) => {
@@ -29,4 +30,6 @@ router.route("/").get((req, res) => {
     })
     .catch((err) => res.status(400).json("Error:" + err));
 });
+
+
 module.exports = router;

@@ -6,6 +6,8 @@ const EmailSchema = new mongoose.Schema({
     title: { type: String, required: true },
     message: { type: String, required: true },
     
+}, {
+    timestamps: true,
 });
 
 const email = mongoose.model("email", EmailSchema);

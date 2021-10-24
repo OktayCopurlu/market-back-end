@@ -15,12 +15,17 @@ async function filter(pReq, pRes) {
   const productID = pReq.query.productID;
   const senderID = pReq.query.senderID;
   const receipientID = pReq.query.recipientID;
+  const _id = pReq.query._id;
+
   if (senderID) {
     const senderMessages = await getUserMessages(senderID);
     return await senderMessages;
   } else if (receipientID) {
     const recipientMessages = await getUserMessages(receipientID);
     return await recipientMessages;
+  } else if (_id) {
+    const userMessages = await getUserMessages(_id);
+    return await userMessages;
   } else {
     const productMessages = await getProductMessages(productID);
     return await productMessages;

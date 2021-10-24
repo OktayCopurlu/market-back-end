@@ -2,8 +2,8 @@ const users = require("../models/UsersModel");
 
 //get user messages
 async function getUserMessages(req) {
-  const senderID = req;
-  const messages = await users.findById(senderID).populate("messages");
+  const userId = req;
+  const messages = await users.findById(userId).populate("messages");
   return await messages.messages;
 }
 
@@ -42,7 +42,6 @@ function update(pReq) {
 
 //filter user for personal page
 async function filter(pReq, qRes) {
-  
   const _id = pReq.query._id;
   const email = pReq.query.email;
   const userId = pReq.query.userId;
@@ -59,7 +58,7 @@ async function filter(pReq, qRes) {
       .catch((err) => qRes.status(400).json("Error:" + err));
   }
   if (userId) {
-   return users
+    return users
       .find({ userId: userId })
       .then((user) => qRes.json(user))
       .catch((err) => qRes.status(400).json("Error:" + err));

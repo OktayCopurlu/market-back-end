@@ -15,6 +15,8 @@ const UsersSchema = new mongoose.Schema({
   messages: [{ type: mongoose.Types.ObjectId, ref: "messages"}],
   products: [{ type: mongoose.Types.ObjectId, ref: "products"}],
   wishes: [{ type: mongoose.Types.ObjectId, ref: "wishes" }],
+}, {
+  timestamps: true,
 });
 
 const users = mongoose.model("users", UsersSchema);
